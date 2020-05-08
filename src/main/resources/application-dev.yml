@@ -13,6 +13,3 @@ spring:
     listener:
       simple:
         acknowledge-mode: AUTO
-    password: pwd
-    username: user
-    virtual-host: my_host
