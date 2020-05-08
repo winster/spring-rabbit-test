@@ -1,7 +1,7 @@
 # Getting Started
 
 ### Reference Documentation
-This is a reference application for the spring-amqp issue 1195
+This is a reference application for the spring-amqp issue [1195](https://github.com/spring-projects/spring-amqp/issues/1195)
 
 It uses default host. Also spring-amqp auto declare exchange, queue and binding. 
 Hence the application will just work out of the box.
