@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class EventListener {
+public class Listener1 {
 
-    @RabbitListener(id="bookingEventsReceiver", queues = "ccbd_queue")
+    @RabbitListener(id="receiver1", queues = "queue1")
     public void receive(String message) {
-        log.info("receive :: {}", message);
+        log.info("Listener1: receive :: {}", message);
     }
 
 }

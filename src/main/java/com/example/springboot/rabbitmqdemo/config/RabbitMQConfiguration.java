@@ -17,22 +17,40 @@ public class RabbitMQConfiguration {
     }
 
     @Bean
-    public DirectExchange myExchange() {
-        return ExchangeBuilder.directExchange(myConfigParameters.getMyExchangeName())
+    public DirectExchange receiver1Exchange() {
+        return ExchangeBuilder.directExchange(myConfigParameters.getReceiver1ExchangeName())
                 .ignoreDeclarationExceptions().build();
     }
 
     @Bean
-    public Queue myQueue() {
-        return QueueBuilder.durable(myConfigParameters.getMyQueueName())
+    public Queue receiver1Queue() {
+        return QueueBuilder.durable(myConfigParameters.getReceiver1QueueName())
                 .build();
     }
 
     @Bean
-    public Binding myBinding() {
-        return BindingBuilder.bind(myQueue())
-                .to(myExchange())
-                .with(myConfigParameters.getMyRoutingKey());
+    public Binding receiver1Binding() {
+        return BindingBuilder.bind(receiver1Queue())
+                .to(receiver1Exchange())
+                .with(myConfigParameters.getReceiver1RoutingKey());
+    }
+    @Bean
+    public DirectExchange receiver2Exchange() {
+        return ExchangeBuilder.directExchange(myConfigParameters.getReceiver2ExchangeName())
+                .ignoreDeclarationExceptions().build();
+    }
+
+    @Bean
+    public Queue receiver2Queue() {
+        return QueueBuilder.durable(myConfigParameters.getReceiver2QueueName())
+                .build();
+    }
+
+    @Bean
+    public Binding receiver2Binding() {
+        return BindingBuilder.bind(receiver2Queue())
+                .to(receiver2Exchange())
+                .with(myConfigParameters.getReceiver2RoutingKey());
     }
 
     /**

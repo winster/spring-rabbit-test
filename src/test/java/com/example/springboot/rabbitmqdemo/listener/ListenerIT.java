@@ -26,9 +26,10 @@ import static org.mockito.Mockito.verify;
 @ActiveProfiles("test")
 @Slf4j
 @ContextConfiguration(classes = RabbitTestConfiguration.class)
-public class EventListenerIT {
+public class ListenerIT {
 
-    private EventListener eventListener;
+    private Listener1 listener1;
+    private Listener2 listener2;
 
     @Autowired
     private RabbitListenerTestHarness harness;
@@ -39,23 +40,24 @@ public class EventListenerIT {
     @Autowired
     private MyConfigParameters myConfigParameters;
 
-    @BeforeEach
-    public void setUp() {
-        eventListener = harness.getSpy(myConfigParameters.getMyListenerId());
-        assertNotNull(eventListener);
-    }
-
-    @AfterEach
-    public void tearDown() {
-        reset(eventListener);
+    @Test
+    public void receiver1() {
+        listener1 = harness.getSpy(myConfigParameters.getReceiver1ListenerId());
+        assertNotNull(listener1);
+        String message = getMessage();
+        testRabbitTemplate.convertAndSend(myConfigParameters.getReceiver1ExchangeName(),
+                myConfigParameters.getReceiver1RoutingKey(), message);
+        verify(listener1).receive(message);
     }
 
     @Test
-    public void receiveBookingEvent() {
+    public void receiver2() {
+        listener2 = harness.getSpy(myConfigParameters.getReceiver2ListenerId());
+        assertNotNull(listener2);
         String message = getMessage();
-        testRabbitTemplate.convertAndSend(myConfigParameters.getMyExchangeName(),
-                myConfigParameters.getMyRoutingKey(), message);
-        verify(eventListener).receive(message);
+        testRabbitTemplate.convertAndSend(myConfigParameters.getReceiver2ExchangeName(),
+                myConfigParameters.getReceiver2RoutingKey(), message);
+        verify(listener2).receive(message);
     }
 
     @SneakyThrows

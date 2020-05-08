@@ -1,14 +1,18 @@
 rabbitmq:
-  myListenerId: bookingEventsReceiver
-  myExchangeName: ccbd_exchange
-  myQueueName: ccbd_queue
-  myRoutingKey: ccbd
+  receiver1ListenerId: receiver1
+  receiver1ExchangeName: exchange1
+  receiver1QueueName: queue1
+  receiver1RoutingKey: one
+  receiver2ListenerId: receiver2
+  receiver2ExchangeName: exchange2
+  receiver2QueueName: queue2
+  receiver2RoutingKey: two
 spring:
   rabbitmq:
     host: localhost
     listener:
       simple:
         acknowledge-mode: AUTO
-    password: pwd
-    username: user
-    virtual-host: my_host
+    password: Amadeus06
+    username: devops
+    virtual-host: cytric_companions

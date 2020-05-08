@@ -12,8 +12,13 @@ import org.springframework.validation.annotation.Validated;
 @Getter
 @Setter
 public class MyConfigParameters {
-    private String myListenerId;
-    private String myExchangeName;
-    private String myQueueName;
-    private String myRoutingKey;
+    private String receiver1ListenerId;
+    private String receiver1ExchangeName;
+    private String receiver1QueueName;
+    private String receiver1RoutingKey;
+
+    private String receiver2ListenerId;
+    private String receiver2ExchangeName;
+    private String receiver2QueueName;
+    private String receiver2RoutingKey;
 }
