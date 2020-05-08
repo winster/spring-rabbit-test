@@ -1,0 +1,14 @@
+rabbitmq:
+  myListenerId: bookingEventsReceiver
+  myExchangeName: ccbd_exchange
+  myQueueName: ccbd_queue
+  myRoutingKey: ccbd
+spring:
+  rabbitmq:
+    host: localhost
+    listener:
+      simple:
+        acknowledge-mode: AUTO
+    password: pwd
+    username: user
+    virtual-host: my_host
