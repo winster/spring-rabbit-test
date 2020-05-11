@@ -7,7 +7,7 @@ So consider this application as an example for using spring-rabbit-test library.
 
 #### TestRabbitTemplate
 
-Integration test using **TestRabbitTemplate**
+Integration test using *TestRabbitTemplate*, *RabbitListenerTest* & *RabbitListenerTestHarness*
 
 1. ListenerIT <br/>
     Test if listeners mapping is correct (currently message can be sent by using Queue name)
