@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Listener1 {
 
-    @RabbitListener(id="receiver1", queues = "queue1")
+    @RabbitListener(id="receiver1", queues = "${rabbitmq.receiver1QueueName}")
     public void receive(String message) {
         log.info("Listener1: receive :: {}", message);
     }

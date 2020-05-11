@@ -34,24 +34,6 @@ public class RabbitMQConfiguration {
                 .to(receiver1Exchange())
                 .with(myConfigParameters.getReceiver1RoutingKey());
     }
-    @Bean
-    public DirectExchange receiver2Exchange() {
-        return ExchangeBuilder.directExchange(myConfigParameters.getReceiver2ExchangeName())
-                .ignoreDeclarationExceptions().build();
-    }
-
-    @Bean
-    public Queue receiver2Queue() {
-        return QueueBuilder.durable(myConfigParameters.getReceiver2QueueName())
-                .build();
-    }
-
-    @Bean
-    public Binding receiver2Binding() {
-        return BindingBuilder.bind(receiver2Queue())
-                .to(receiver2Exchange())
-                .with(myConfigParameters.getReceiver2RoutingKey());
-    }
 
     /**
      * In case connection to RabbitMQ throws ACCESS_REFUSED as user not created/permitted yet there
