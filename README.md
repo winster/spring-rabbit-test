@@ -13,7 +13,7 @@ Integration test using *TestRabbitTemplate*, *RabbitListenerTest* & *RabbitListe
     Test if listeners mapping is correct (currently message can be sent by using Queue name)
 
 ###
-Application configuration. RabbitMQ should be running.
+Application configuration. TestRabbitTemplate allows to test without broker running.
 
 It uses default host. Also spring-amqp auto declare exchange, queue and binding. 
 Hence the application will just work out of the box.
